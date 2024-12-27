@@ -78,7 +78,7 @@ def anaylise_all_orders(all_orders):
   
   imp_cols = ['order_id', 'order_total', 'restaurant_id', 'restaurant_name', 'restaurant_city_name', 'payment_method', 'order_delivery_status', 'delivery_time_in_seconds', 'ordered_time_in_seconds', 'order_items']
   df = pd.json_normalize(all_orders)[imp_cols]
-
+  df = df[df['order_delivery_status'] == 'delivered']  
   df['order_time_datetime'] = df.ordered_time_in_seconds.apply(lambda x: datetime.fromtimestamp(x))
   df['order_day'] = df.order_time_datetime.apply(lambda x: x.day)
   df['order_month'] = df.order_time_datetime.apply(lambda x: x.month)
@@ -88,6 +88,7 @@ def anaylise_all_orders(all_orders):
   # grouped_by_month_year = df.groupby(['order_month', 'order_year']).apply(custom_agg, include_groups=False).sort_values('order_year')
 
   grouped_by_rest.to_csv('swiggy-expenses.csv')
+  df.to_csv('all_data.csv')
 
 if __name__ == '__main__':
   ENV = os.getenv('ENV', 'sandbox')
