@@ -14,6 +14,8 @@ pip3 install -r requirements.txt
 
 1. Login to [swiggy](https://www.swiggy.com) on the browser and open the [orders page](https://www.swiggy.com/my-account/orders).
 2. Inspect the page and search for __all?order_id=__ in the Network tab.
+![image](https://github.com/user-attachments/assets/e6dd25e9-da72-441e-b00f-ab7fb1753162)
+
 3. Expand the request and copy the __cookie:__ header's value.
 4. Paste the value in __cookies__ file in the project directory: swiggy-expense-calc/cookies.
 
