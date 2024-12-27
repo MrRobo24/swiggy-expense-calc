@@ -171,3 +171,5 @@ cython_debug/
 .pypirc
 
 cookies
+*.ipynb
+*.csv
